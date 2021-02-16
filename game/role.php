@@ -1,13 +1,16 @@
 <?php
 $db = new Mysql();
 $user = $_SESSION['userid'];
-$role = $db->table('role')->field('*')->where("Id=$user")->item();
+if ($_GET['role'] == 'self') {
+    $role = $db->table('role')->field('*')->where("Id=$user")->item();
+} else {
+    $role = $db->table('role')->field('*')->where("Id={$_GET['role']}")->item();
+}
 $lv = $role['Lv'];
 $lv_exp = $db->table('lv')->field('exp')->where("Lv=$lv")->item();
 ?>
 <div style="height: 20px"></div>
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
-    <h6 style="color: #f1c9a8">系统消息： 欢迎来到仙之梦！</h6>
     <h4>个人信息: </h4>
     姓名：<?php echo $role['name']; ?><br>
     等级：Lv <?php echo $role['Lv']; ?><br>
@@ -38,5 +41,29 @@ $lv_exp = $db->table('lv')->field('exp')->where("Lv=$lv")->item();
             </span>
     </div>
     <div style="height: 10px"></div>
-    <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">返回首页</a>
+    <h4>基础属性: </h4>
+    攻击：<?php echo $role['Atk']; ?><br>
+    防御：<?php echo $role['Def']; ?><br>
+    速度：<?php echo $role['Spd']; ?><br>
+    <div style="height: 10px"></div>
+    <h4>修仙属性: </h4>
+    境界：元婴<br>
+    心境：化神<br>
+    肉身：涅槃<br>
+    <div style="height: 10px"></div>
+    <?php
+    if ($_GET['role'] == 'self') {
+        $html = <<<EOF
+        <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">查看装备</a>
+        <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">返回首页</a>
+        EOF;
+        echo $html;
+    }else{
+        $html = <<<EOF
+        <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">加为好友</a>
+        <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">返回首页</a>
+        EOF;
+        echo $html;
+    }
+    ?>
 </div>

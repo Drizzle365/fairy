@@ -7,10 +7,10 @@ if (isset($_GET['map'])) {
     $role_map = $_GET['map'];
     $db->table('role')->where("Id={$user}")->update(array('map' => $role_map));
 }
+$task = $db->table('task')->field('*')->where($role['task'])->item();
 ?>
-<div style="height: 20px"></div>
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
-    <h6 style="color: #f1c9a8">系统消息： 欢迎来到仙之梦！</h6>
+    <h6 style="color: #f0e6c6">主线任务：<?php echo "<a href='/main.php?page=task&task={$task['Id']}' style='color: #ffffff'>{$task['name']}</a>" ?></h6>
     <h4>个人信息: </h4>
     姓名：<?php echo $role['name']; ?><br>
     等级：Lv <?php echo $role['Lv']; ?><br>

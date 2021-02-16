@@ -71,6 +71,10 @@ if (isset($_GET['page'])) {
 </nav>
 <!--suppress CssInvalidFunction -->
 <div class="container main" style="width: 90%;height: auto;background-color: rgb(67,178,246,0.6);position: relative">
+    <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
+        <div style="height: 20px"></div>
+        <h6 style="color: #f1c9a8">系统消息： 欢迎来到仙之梦！</h6>
+    </div>
     <?php
     $db = new Mysql();
     $res = $db->table('role')->field('*')->where("Id=$user")->item();
