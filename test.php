@@ -1,5 +1,4 @@
 <?php
+$n=5;
 
-
-$str="";
-print (bool)$str;
+echo $n;

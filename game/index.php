@@ -72,9 +72,9 @@ $task = $db->table('task')->field('*')->where($role['task'])->item();
     }
     ?>
     <div style="height: 20px"></div>
-    <h4>环境:</h4>
+    <h4>你看见了:</h4>
 
-    NPC:
+    【NPC】:
     <?php
     if ($game_map['npc']) {
         $map_npc = explode(',', $game_map['npc']);
@@ -87,7 +87,7 @@ $task = $db->table('task')->field('*')->where($role['task'])->item();
     echo "<br>"
     ?>
 
-    玩家:
+    【玩家】:
     <?php
     if (($game_map['role'])) {
         $map_role = explode(',', $game_map['role']);
@@ -100,7 +100,7 @@ $task = $db->table('task')->field('*')->where($role['task'])->item();
     echo "<br>"
     ?>
 
-    活动:
+    【活动】:
     <?php
     if ($game_map['activity']) {
         $map_activity = explode(',', $game_map['activity']);
@@ -112,7 +112,7 @@ $task = $db->table('task')->field('*')->where($role['task'])->item();
     }
     echo "<br>"
     ?>
-    怪物:
+    【怪物】:
     <?php
     if ($game_map['monster']) {
         $map_monster = explode(',', $game_map['monster']);

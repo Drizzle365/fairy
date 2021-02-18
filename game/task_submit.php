@@ -17,11 +17,23 @@ if (isset($_GET['task'])) {
 ?>
 <div style="height: 20px"></div>
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
-    <h3>查看任务:<?php echo " {$task['name']}"; ?> </h3>
+    <h3><?php
+        if($role['task']>$_GET['task'])
+            echo "交付成功";
+        else
+            echo "交付失败";
+        ?>
+    </h3>
     <div style="height: 20px"></div>
-    任务介绍:<?php echo "  {$task['content']}"; ?><br>
-    任务奖励:<?php echo "  {$task['silver']} 银币"; ?><br>
+    <?php
+    $html=<<<EOF
+    获得奖励:<?php echo "  {$task['silver']} 银币"; ?><br>
+    EOF;
+    if($role['task']>$_GET['task'])
+        echo $html;
+    else
+        echo "任务未完成！";
+    ?>
     <div style="height: 20px"></div>
-    <a href="/main.php?page=task_submit&task=<?php echo $task['Id']; ?>" style="color: #0f6674;font-size: 15px;margin-top: 3px">交付</a>
     <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">回到首页</a>
 </div>

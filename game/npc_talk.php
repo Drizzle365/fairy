@@ -13,16 +13,12 @@ if (isset($_GET['npc'])) {
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
     <h3>【NPC】:<?php echo " {$npc['name']}"; ?> </h3>
     <div style="height: 20px"></div>
-    【介绍】: <?php echo "{$npc['content']}"; ?><br>
-    【对话】: <?php
+    <?php
     if ($task['class'] == 1 && $task['point_id'] == $npc['Id']) {
-        echo $task['talk'];
-    } else {
-        echo $npc['talk'];
+        $db->table('role')->where("Id=$user")->update(array('task' => $role['task'] + 1));
     }
+    echo "您和{$npc['name']}完成一番长谈.";
     ?><br>
     <div style="height: 20px"></div>
-    <a href="/main.php?page=npc_talk&npc=<?php echo $npc['Id']; ?>"
-       style="color: #0f6674;font-size: 15px;margin-top: 3px">完成对话</a><br>
     <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">回到首页</a>
 </div>

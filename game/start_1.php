@@ -9,7 +9,7 @@ if ($res) {
 $game_name = $_GET['name'];
 $data = ['Id' => $_SESSION['userid'], 'name' => $_GET['name'],
     'sex' => $_GET['sex'], 'lv' => 1, 'exp' => 10, 'Hp' => 100,
-    'Mp' => 50, 'Def' => 10, 'Atk' => 10, 'Spd' => 10, 'Hp_ing' => 100, 'Mp_ing' => 50,'map'=>1];
+    'Mp' => 50, 'Def' => 10, 'Atk' => 10, 'Spd' => 10, 'Hp_ing' => 100, 'Mp_ing' => 50,'map'=>1,'task'=>1];
 $db->table('role')->insert($data);
 echo "从现在起，你就叫" . $game_name . "了，真是个好看的孩子！";
 ?>
