@@ -30,7 +30,7 @@ if (isset($_GET['task'])) {
         $task_goods=explode(',',$task['goods']);
         foreach ($task_goods as $key => $value){
             $goods=$db->table('goods')->field('*')->where("Id=$value")->item();
-            echo " | {$goods['name']} | <br>";
+            echo " | <a href='/main.php?page=goods_see&goods={$goods['Id']}'>{$goods['name']}</a> | <br>";
         }
     }
     ?>
