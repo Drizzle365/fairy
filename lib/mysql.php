@@ -133,6 +133,12 @@ class Mysql
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    //分页
+    public function pages()
+    {
+
+    }
+
     //插入数据
     public function insert($data): int
     {

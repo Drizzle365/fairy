@@ -18,18 +18,20 @@ if (isset($_GET['task'])) {
 <div style="height: 20px"></div>
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
     <h3><?php
-        if($role['task']>$_GET['task'])
+        if ($role['task'] > $_GET['task']) {
+            $db->table('role')->where("id=$user")->update(array('task'=>$role['task']+1));
             echo "交付成功";
-        else
+        } else {
             echo "交付失败";
+        }
         ?>
     </h3>
     <div style="height: 20px"></div>
     <?php
-    $html=<<<EOF
+    $html = <<<EOF
     获得奖励:<?php echo "  {$task['silver']} 银币"; ?><br>
     EOF;
-    if($role['task']>$_GET['task'])
+    if ($role['task'] > $_GET['task'])
         echo $html;
     else
         echo "任务未完成！";

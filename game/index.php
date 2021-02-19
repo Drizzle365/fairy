@@ -7,10 +7,23 @@ if (isset($_GET['map'])) {
     $role_map = $_GET['map'];
     $db->table('role')->where("Id={$user}")->update(array('map' => $role_map));
 }
-$task = $db->table('task')->field('*')->where($role['task'])->item();
+$flag = 0;
+if ($role['task'] % 2 == 0) {
+    $role['task']--;
+    $flag = 1;
+    $task = $db->table('task')->field('*')->where("Id={$role['task']}")->item();
+    $task_name = $task['name'] . " [已完成]";
+} else {
+    $task = $db->table('task')->field('*')->where("Id={$role['task']}")->item();
+    $task_name = $task['name'];
+}
+
 ?>
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
-    <h6 style="color: #f0e6c6">主线任务：<?php echo "<a href='/main.php?page=task&task={$task['Id']}' style='color: #ffffff'>{$task['name']}</a>" ?></h6>
+    <h6 style="color: #f0e6c6">
+        主线任务：<?php
+        echo "<a href='/main.php?page=task&task={$task['Id']}' style='color: #ffffff'>$task_name</a>"
+        ?></h6>
     <h4>个人信息: </h4>
     姓名：<?php echo $role['name']; ?><br>
     等级：Lv <?php echo $role['Lv']; ?><br>
@@ -159,6 +172,24 @@ $task = $db->table('task')->field('*')->where($role['task'])->item();
         </a>
         <a href="/main.php?page=unfinished" style="margin-left: 5px">
             <button type="button" class="btn btn-secondary">技能</button>
+        </a>
+    </div>
+    <div style="height: 10px"></div>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a href="/main.php?page=unfinished" style="margin-left: 5px">
+            <button type="button" class="btn btn-secondary">修行</button>
+        </a>
+        <a href="/main.php?page=unfinished" style="margin-left: 5px">
+            <button type="button" class="btn btn-secondary">宗门</button>
+        </a>
+        <a href="/main.php?page=unfinished" style="margin-left: 5px">
+            <button type="button" class="btn btn-secondary">竞技</button>
+        </a>
+        <a href="/main.php?page=unfinished" style="margin-left: 5px">
+            <button type="button" class="btn btn-secondary">社交</button>
+        </a>
+        <a href="/main.php?page=unfinished" style="margin-left: 5px">
+            <button type="button" class="btn btn-secondary">排行</button>
         </a>
     </div>
     <div style="height: 10px"></div>

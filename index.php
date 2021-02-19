@@ -108,15 +108,7 @@ if (isset($_SESSION['userid'])) {
             https://github.com/Drizzle365/fairy</a>
     </div>
 </div>
-<div class="container main">
-    <div style="color: white;font-size: 18px;margin: 20px;position: absolute">请选择您要游玩的服务器 :</div>
-    <ul class="list container">
-        <li class="btn btn-primary btn-lg btn-block ">诛仙之战</li>
-        <li class="btn btn-secondary btn-lg btn-block">未开放</li>
-        <li class="btn btn-secondary btn-lg btn-block">未开放</li>
-        <li class="btn btn-secondary btn-lg btn-block">未开放</li>
-    </ul>
-</div>
+
 </body>
 <footer>
     <div class="container footer">
