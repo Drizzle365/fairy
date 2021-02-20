@@ -69,7 +69,7 @@ class Mysql
             $where = $this->build_where();
             $sql = "select {$this->filed} from {$this->table} {$where}";
             if (isset($this->order)) {
-                $sql .= " order by {$this->order} {$this->order_mode}";
+                $sql .= " order by `{$this->order}` {$this->order_mode}";
             }
             if (isset($this->limit)) {
                 $sql .= " limit {$this->limit}";

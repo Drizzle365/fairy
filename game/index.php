@@ -3,6 +3,7 @@ $db = new Mysql();
 $user = $_SESSION['userid'];
 $role = $db->table('role')->field('*')->where("Id=$user")->item();
 $role_map = $role['map'];
+$db->table('role')->where("Id=$user")->update(array('Time'=>time()));
 if (isset($_GET['map'])) {
     $role_map = $_GET['map'];
     $db->table('role')->where("Id={$user}")->update(array('map' => $role_map));
@@ -103,7 +104,8 @@ if ($role['task'] % 2 == 0) {
 
 
     <?php
-    $map_role=$db->table('role')->field('Id,name')->where("map=$role_map")->list(3);
+    $map_role = $db->table('role')->field('Id,name,Time')->where("map=$role_map and Id!=$user")->order('Time', 'DESC')->list(5);
+    $db = new Mysql();
     if (isset($map_role)) {
         echo '【玩家】: ';
         echo "| ";
