@@ -4,7 +4,6 @@
  Source Server         : 仙之梦
  Source Server Type    : MySQL
  Source Server Version : 80020
- Source Host           : 159.75.52.227:3306
  Source Schema         : xm
 
  Target Server Type    : MySQL
