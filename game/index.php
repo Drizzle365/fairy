@@ -87,9 +87,10 @@ if ($role['task'] % 2 == 0) {
     <div style="height: 20px"></div>
     <h4>你看见了:</h4>
 
-    【NPC】:
+
     <?php
     if ($game_map['npc']) {
+        echo '【NPC】: ';
         $map_npc = explode(',', $game_map['npc']);
         echo "| ";
         foreach ($map_npc as $key => $value) {
@@ -100,22 +101,23 @@ if ($role['task'] % 2 == 0) {
     echo "<br>"
     ?>
 
-    【玩家】:
+
     <?php
-    if (($game_map['role'])) {
-        $map_role = explode(',', $game_map['role']);
+    $map_role=$db->table('role')->field('Id,name')->where("map=$role_map")->list(3);
+    if (isset($map_role)) {
+        echo '【玩家】: ';
         echo "| ";
-        foreach ($map_role as $key => $value) {
-            $role = $db->table('role')->field('name')->where("Id=$value")->item();
-            echo "<a href='main.php?role=$value&page=role' style='color: #f0e6c6'>" . $role['name'] . "</a> | ";
+        foreach ($map_role as $m) {
+            echo "<a href='main.php?role={$m['Id']}&page=role' style='color: #f0e6c6'>" . $m['name'] . "</a> | ";
         }
     }
     echo "<br>"
     ?>
 
-    【活动】:
+
     <?php
     if ($game_map['activity']) {
+        echo '【活动】: ';
         $map_activity = explode(',', $game_map['activity']);
         echo "| ";
         foreach ($map_activity as $key => $value) {
@@ -125,9 +127,10 @@ if ($role['task'] % 2 == 0) {
     }
     echo "<br>"
     ?>
-    【怪物】:
+
     <?php
     if ($game_map['monster']) {
+        echo '【怪物】: ';
         $map_monster = explode(',', $game_map['monster']);
         echo "| ";
         foreach ($map_monster as $key => $value) {

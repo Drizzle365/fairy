@@ -15,9 +15,12 @@ $lv_exp = $db->table('lv')->field('exp')->where("Lv=$lv")->item();
     姓名：<?php echo $role['name']; ?><br>
     等级：Lv <?php echo $role['Lv']; ?><br>
     经验：<?php echo $role['Exp'] . '/' . $lv_exp['exp']; ?>
-    <a>
+    <?php if ($_GET['role'] == 'self') {
+        echo '<a>
         <button type="button" class="btn btn-warning" style="margin-left: 5px">升级</button>
-    </a>
+        </a>';
+    }
+    ?>
     <div>
         <span style="float: left">血量：</span>
         <div class="progress" style="width: 100px;float: left;margin-top: 4px">
@@ -58,7 +61,7 @@ $lv_exp = $db->table('lv')->field('exp')->where("Lv=$lv")->item();
         <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">返回首页</a>
         EOF;
         echo $html;
-    }else{
+    } else {
         $html = <<<EOF
         <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">加为好友</a>
         <a href="/main.php" style="color: #0f6674;font-size: 15px;margin-top: 3px">返回首页</a>
