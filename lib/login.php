@@ -12,8 +12,10 @@ if (!$res) {
     exit(json_encode(array('code' => 0, 'msg' => '登录失败')));
 }
 session_start();
-
+$ip = $_SERVER["REMOTE_ADDR"];
+$time = date("Y年m月d日h时i分a");
 $_SESSION['userid'] = $id;
+$db->table('user')->where("Id=$id")->update(array('ip' => $ip, 'time' => $time));
 exit(json_encode(array('code' => 1, 'msg' => '登录成功')));
 
 

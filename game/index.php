@@ -66,22 +66,22 @@ if ($role['task'] % 2 == 0) {
     if ($game_map['N']) {
         $n = $game_map['N'];
         $temp = $db->table('map')->field('*')->where("id=$n")->item();
-        echo "北: <a href='main.php?map=$n' style='color: #f0e6c6'>" . $temp['name'] . "</a><br>";
+        echo "【北】: <a href='main.php?map=$n' style='color: #f0e6c6'>" . $temp['name'] . " ↑</a><br>";
     }
     if ($game_map['S']) {
         $s = $game_map['S'];
         $temp = $db->table('map')->field('*')->where("id=$s")->item();
-        echo "南: <a href='main.php?map=$s' style='color: #f0e6c6'>" . $temp['name'] . "</a> <br>";
+        echo "【南】: <a href='main.php?map=$s' style='color: #f0e6c6'>" . $temp['name'] . " ↓</a> <br>";
     }
     if ($game_map['W']) {
         $w = $game_map['W'];
         $temp = $db->table('map')->field('*')->where("id=$w")->item();
-        echo "西: <a href='main.php?map=$w' style='color: #f0e6c6'>" . $temp['name'] . "</a> <br>";
+        echo "【西】: <a href='main.php?map=$w' style='color: #f0e6c6'>" . $temp['name'] . " ←</a> <br>";
     }
     if ($game_map['E']) {
         $e = $game_map['E'];
         $temp = $db->table('map')->field('*')->where("id=$e")->item();
-        echo "东: <a href='main.php?map=$e' style='color: #f0e6c6'>" . $temp['name'] . "</a> <br>";
+        echo "【东】: <a href='main.php?map=$e' style='color: #f0e6c6'>" . $temp['name'] . " →</a> <br>";
     }
     ?>
     <div style="height: 20px"></div>
@@ -143,7 +143,7 @@ if ($role['task'] % 2 == 0) {
         <a href="/main.php?page=role&role=self" style="margin-left: 5px">
             <button type="button" class="btn btn-secondary">角色</button>
         </a>
-        <a href="/main.php?page=unfinished" style="margin-left: 5px">
+        <a href="/main.php?page=role_goods&pages=1" style="margin-left: 5px">
             <button type="button" class="btn btn-secondary">背包</button>
         </a>
         <a href="/main.php?page=unfinished" style="margin-left: 5px">

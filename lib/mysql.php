@@ -1,5 +1,6 @@
 <?php
 
+use JetBrains\PhpStorm\ArrayShape;
 use JetBrains\PhpStorm\Pure;
 
 class Mysql
@@ -11,6 +12,7 @@ class Mysql
     private PDO $pdo;
     private string $order;
     private string $order_mode;
+    private string $limit;
 
     public function __construct()//构造器
     {
@@ -69,6 +71,9 @@ class Mysql
             if (isset($this->order)) {
                 $sql .= " order by {$this->order} {$this->order_mode}";
             }
+            if (isset($this->limit)) {
+                $sql .= " limit {$this->limit}";
+            }
 
         }
         if ($type == 'insert') {
@@ -95,9 +100,13 @@ class Mysql
                 $value = is_string($value) ? "'" . $value . "'" : $value;
                 $set .= "{$key}={$value},";
             }
-            $set=rtrim($set,',');
-            $set = $set?" set {$set}":$set;
+            $set = rtrim($set, ',');
+            $set = $set ? " set {$set}" : $set;
             $sql = "update {$this->table} {$set} {$where}";
+        }
+        if ($type == 'count') {
+            $where = $this->build_where();
+            $sql = "select count(*) from {$this->table} {$where}";
         }
         //echo $sql;exit();
         return $sql;
@@ -133,10 +142,22 @@ class Mysql
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //分页
-    public function pages()
+    //查询数据总数
+    public function count()
     {
+        $sql = $this->build_sql('count');
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
 
+    //分页
+    #[ArrayShape(['total' => "mixed", 'date' => "array"])] public function pages($page, $page_size = 10): array
+    {
+        $count = $this->count();
+        $this->limit = ($page - 1) * $page_size . ',' . $page_size;
+        $data = $this->list();
+        return array('total' => $count, 'date' => $data);
     }
 
     //插入数据
@@ -160,7 +181,7 @@ class Mysql
     //更新数据,并返回影响行数
     public function update($data): int
     {
-        $sql = $this->build_sql('update',$data);
+        $sql = $this->build_sql('update', $data);
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         return $stmt->rowCount();
