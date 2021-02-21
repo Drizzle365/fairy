@@ -40,7 +40,7 @@ if (isset($_GET['page'])) {
         background-position: center;
         background-attachment: fixed;
         background-size: cover;
-        width: 100%;
+        width: 92%;
         height: 100%;
         align-items: center;
         margin: auto;
@@ -48,7 +48,8 @@ if (isset($_GET['page'])) {
     }
 </style>
 <body>
-<nav class="navbar navbar-light bg-light" style="opacity: 0.8">
+<div style="height: 10px"></div>
+<nav class="navbar navbar-light bg-light" style="opacity: 0.8;border-radius: 10px;">
     <div style="color:black;font-size: 18px"><a href="/">仙之梦</a></div>
     <div class="button">
         <?php
