@@ -6,15 +6,14 @@ if ($_GET['role'] == 'self') {
 } else {
     $role = $db->table('role')->field('*')->where("Id={$_GET['role']}")->item();
 }
-$lv = $role['Lv'];
-$lv_exp = $db->table('lv')->field('exp')->where("Lv=$lv")->item();
+$lv=$db->table('lv')->field('*')->where("Lv={$role['Lv']}")->item();
 ?>
 <div style="height: 20px"></div>
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
     <h4>个人信息: </h4>
     姓名：<?php echo $role['name']; ?><br>
-    等级：Lv <?php echo $role['Lv']; ?><br>
-    经验：<?php echo $role['Exp'] . '/' . $lv_exp['exp']; ?>
+    境界：<?php echo $lv['name']; ?><br>
+    修为：<?php echo $role['Exp'] . '/' . $lv['exp']; ?>
     <?php if ($_GET['role'] == 'self') {
         echo '<a>
         <button type="button" class="btn btn-warning" style="margin-left: 5px">升级</button>
@@ -50,7 +49,7 @@ $lv_exp = $db->table('lv')->field('exp')->where("Lv=$lv")->item();
     速度：<?php echo $role['Spd']; ?><br>
     <div style="height: 10px"></div>
     <h4>修仙属性: </h4>
-    境界：元婴<br>
+    气运：七彩<br>
     心境：化神<br>
     肉身：涅槃<br>
     <div style="height: 10px"></div>

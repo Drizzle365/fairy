@@ -2,6 +2,7 @@
 $db = new Mysql();
 $user = $_SESSION['userid'];
 $role = $db->table('role')->field('*')->where("Id=$user")->item();
+$lv=$db->table('lv')->field('*')->where("Lv={$role['Lv']}")->item();
 $role_map = $role['map'];
 $db->table('role')->where("Id=$user")->update(array('Time'=>time()));
 if (isset($_GET['map'])) {
@@ -27,7 +28,7 @@ if ($role['task'] % 2 == 0) {
         ?></h6>
     <h4>个人信息: </h4>
     姓名：<?php echo $role['name']; ?><br>
-    等级：Lv <?php echo $role['Lv']; ?><br>
+    境界：<?php echo $lv['name']; ?><br>
     <div>
         <span style="float: left">血量：</span>
         <div class="progress" style="width: 100px;float: left;margin-top: 4px">
