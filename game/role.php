@@ -43,15 +43,17 @@ $lv=$db->table('lv')->field('*')->where("Lv={$role['Lv']}")->item();
             </span>
     </div>
     <div style="height: 10px"></div>
-    <h4>基础属性: </h4>
-    攻击：<?php echo $role['Atk']; ?><br>
-    防御：<?php echo $role['Def']; ?><br>
-    速度：<?php echo $role['Spd']; ?><br>
+    <h4>三行属性: </h4>
+    水攻：<?php echo $role['water_atk']; ?>
+    水抗：<?php echo $role['water_def']; ?><br>
+    火攻：<?php echo $role['fire_atk']; ?>
+    火抗：<?php echo $role['fire_def']; ?><br>
+    木攻：<?php echo $role['wood_atk']; ?>
+    木抗：<?php echo $role['wood_def']; ?><br>
     <div style="height: 10px"></div>
-    <h4>修仙属性: </h4>
-    气运：七彩<br>
-    心境：化神<br>
-    肉身：涅槃<br>
+    <h4>人生属性: </h4>
+    气运：<?php echo $role['fate']; ?><br>
+    声望：<?php echo $role['prestige']; ?><br>
     <div style="height: 10px"></div>
     <?php
     if ($_GET['role'] == 'self') {
