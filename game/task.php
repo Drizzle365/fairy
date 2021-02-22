@@ -23,8 +23,8 @@ if (isset($_GET['task'])) {
     任务奖励:
     <div style="height: 10px"></div>
     <?php
-    if ($task['silver']>0)
-        echo "  {$task['silver']} 银币";
+    if ($task['ls']>0)
+        echo "  {$task['ls']} 灵石";
     if($task['goods'])
     {
         $task_goods=explode(',',$task['goods']);

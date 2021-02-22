@@ -119,13 +119,13 @@ if ($role['task'] % 2 == 0) {
 
 
     <?php
-    if ($game_map['activity']) {
-        echo '【活动】: ';
-        $map_activity = explode(',', $game_map['activity']);
+    if ($game_map['facilities']) {
+        echo '【设施】: ';
+        $map_facilities = explode(',', $game_map['facilities']);
         echo "| ";
-        foreach ($map_activity as $key => $value) {
-            $activity = $db->table('activity')->field('name')->where("Id=$value")->item();
-            echo "<a href='main.php?activity=$value&page=activity' style='color: #f0e6c6'>" . $activity['name'] . "</a> | ";
+        foreach ($map_facilities as $key => $value) {
+            $facilities = $db->table('facilities')->field('name')->where("Id=$value")->item();
+            echo "<a href='main.php?facilities_id=$value&page=facilities' style='color: #f0e6c6'>" . $facilities['name'] . "</a> | ";
         }
     }
     echo "<br>"

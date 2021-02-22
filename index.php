@@ -99,7 +99,7 @@ if (isset($_SESSION['userid'])) {
     </div>
 </div>
 <!--suppress CssInvalidFunction -->
-<div class="container main" style="width: 75%;height: 400px;background-color: rgb(67,178,246,0.6);">
+<div class="container main" style="width: 100%;height: 400px;background-color: rgb(67,178,246,0.6);">
     <div style="color: white;font-size: 18px;margin: 20px;position: absolute">游戏公告 :</div>
     <div style="color: white;font-size: 15px;margin: 45px;position: absolute;text-align: left">
         <br>嘿嘿，本游戏正在紧张开发中，开发完成后会在 Github 开源<br><br>

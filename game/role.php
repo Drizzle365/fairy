@@ -16,7 +16,7 @@ $lv=$db->table('lv')->field('*')->where("Lv={$role['Lv']}")->item();
     修为：<?php echo $role['Exp'] . '/' . $lv['exp']; ?>
     <?php if ($_GET['role'] == 'self') {
         echo '<a>
-        <button type="button" class="btn btn-warning" style="margin-left: 5px">升级</button>
+        <button type="button" class="btn btn-warning" style="margin-left: 5px">晋升</button>
         </a>';
     }
     ?>

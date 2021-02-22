@@ -20,7 +20,7 @@ if (isset($_GET['task'])) {
     <h3><?php
         if ($role['task'] > $_GET['task']) {
             $db->table('role')->where("id=$user")->update(array('task' => $role['task'] + 1));
-            $db->table('role')->where("id=$user")->update(array('silver' => $role['silver'] + $task['silver']));
+            $db->table('role')->where("id=$user")->update(array('silver' => $role['ls'] + $task['ls']));
             echo "交付成功";
         } else {
             echo "交付失败";
@@ -32,8 +32,8 @@ if (isset($_GET['task'])) {
     $html = '';
     if ($role['task'] > $_GET['task']) {
         echo "获得奖励:<br>";
-        if ($task['silver'] > 0)
-            echo "{$task['silver']} 银币 <br>";
+        if ($task['ls'] > 0)
+            echo "{$task['ls']} 灵石 <br>";
         if ($task['goods']) {
             $task_goods = explode(',', $task['goods']);
             foreach ($task_goods as $key => $value) {

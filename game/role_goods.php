@@ -13,7 +13,7 @@ if (isset($_GET['pages'])) {
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
     <h3>我的背包</h3>
     <div style="height: 20px"></div>
-    <P>银币 <?php echo ($role['silver']);?> 枚</P>
+    <P>灵石 <?php echo ($role['ls']);?> 枚</P>
     <P>您一共有 <?php echo ($goods['total']);?> 种物品：</P>
     <table class="table">
         <thead>

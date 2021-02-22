@@ -1,3 +1,4 @@
+<div style="height: 15px;"></div>
 <?php
 $db = new Mysql();
 $id = $_SESSION['userid'];
@@ -13,11 +14,12 @@ $data = ['Id' => $_SESSION['userid'], 'name' => $_GET['name'],
 $db->table('role')->insert($data);
 echo "从现在起，你就叫" . $game_name . "了，真是个好看的孩子！";
 ?>
+    <div style="height: 15px;"></div>
 <div style="text-align: left;color: white;font-size: 14px">
-    “<?php echo $game_name; ?>。”司婆婆看着襁褓中的婴孩，那婴孩也不怕她，竟然咿咿呀呀的笑了。<br>
-    ……<br>
-    江边，笛声传来，牧童坐在一头母牛背上吹笛，笛声清脆悠扬。这牧童十一二岁年纪，长得眉清目秀，唇红齿白，衣衫半敞，胸前挂着一枚玉佩。<br>
-    这少年正是十一年前司婆婆从江边捡来的婴儿，这些年来村里的老人含辛茹苦将这孩子养大，司婆婆不知从哪儿弄来一头母牛，让婴儿时的秦牧每天喝牛奶，熬过了容易早夭的时期。<br>
+    你是一个孤儿，自幼被桃花村的村长收养。<br>
+    在你死缠难打之下，村长终于同意传授你修仙的法门。<br>
+    修仙的第一步，便是觉醒命格，赶快到【广场】的【觉醒石碑】进行觉醒吧。<br>
+    <div style="height: 15px;"></div>
     <a href="index.php?page=start_2.php">
         <button type="button" class="btn btn-outline-warning">继续</button>
     </a>

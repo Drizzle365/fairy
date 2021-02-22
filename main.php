@@ -81,6 +81,9 @@ if (isset($_GET['page'])) {
     $res = $db->table('role')->field('*')->where("Id=$user")->item();
     if (!$res && !$page) {
         include "game/start.php";
+    } else if ($page=='facilities') {
+        /** @noinspection PhpIncludeInspection */
+        include "game/facilities/{$_GET['facilities_id']}.php";
     } else if ($page) {
         /** @noinspection PhpIncludeInspection */
         include "game/$page.php";
