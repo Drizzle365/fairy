@@ -10,11 +10,13 @@ if ($res) {
 $game_name = $_GET['name'];
 $data = ['Id' => $_SESSION['userid'], 'name' => $_GET['name'],
     'sex' => $_GET['sex'], 'lv' => 1, 'exp' => 10, 'Hp' => 100,
-    'Mp' => 50, 'Def' => 10, 'Atk' => 10, 'Spd' => 10, 'Hp_ing' => 100, 'Mp_ing' => 50,'map'=>1,'task'=>1];
+    'Mp' => 50, 'water_atk' => 10, 'water_def' => 10,
+    'fire_atk' => 10, 'fire_def' => 10, 'wood_atk' => 10, 'wood_def' => 10,
+    'Spd' => 10, 'Hp_ing' => 100, 'Mp_ing' => 50, 'map' => 1, 'task' => 1];
 $db->table('role')->insert($data);
 echo "从现在起，你就叫" . $game_name . "了，真是个好看的孩子！";
 ?>
-    <div style="height: 15px;"></div>
+<div style="height: 15px;"></div>
 <div style="text-align: left;color: white;font-size: 14px">
     你是一个孤儿，自幼被桃花村的村长收养。<br>
     在你死缠难打之下，村长终于同意传授你修仙的法门。<br>

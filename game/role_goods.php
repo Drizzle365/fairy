@@ -4,7 +4,7 @@ $user = $_SESSION['userid'];
 $role = $db->table('role')->field('*')->where("Id=$user")->item();
 if (isset($_GET['pages'])) {
     $pages=$_GET['pages'];
-    $goods = $db->table('role_goods')->field('*')->where("Id={$user}")->pages($pages,5);
+    $goods = $db->table('role_goods')->field('*')->where("role_id={$user}")->pages($pages,5);
 } else {
     exit("未知的NPC");
 }
@@ -27,8 +27,11 @@ if (isset($_GET['pages'])) {
         <?php
         foreach ($goods['date'] as $g)
         {
+            $v='';
+            if ($g['value']!=0)
+                $v=$g['value'] . ' · ';
             echo "<tr>";
-            echo "<td> {$g['goods_name']} </td>";
+            echo "<td>{$v}{$g['goods_name']} </td>";
             echo "<td> {$g['num']} </td>";
             echo "<td><a href='/main.php?page=goods_see&goods={$g['goods_id']}'>[查看]</a> <a href='#'>[使用]</a></td>";
         }

@@ -18,7 +18,7 @@ if (isset($_GET['task'])) {
 <div style="height: 20px"></div>
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
     <h3><?php
-        if ($role['task'] == $_GET['task']+1) {
+        if ($role['task'] == $_GET['task'] + 1) {
             $db->table('role')->where("id=$user")->update(array('task' => $role['task'] + 1));
             $db->table('role')->where("id=$user")->update(array('ls' => $role['ls'] + $task['ls']));
             echo "交付成功";
@@ -37,12 +37,15 @@ if (isset($_GET['task'])) {
         if ($task['goods']) {
             $task_goods = explode(',', $task['goods']);
             foreach ($task_goods as $key => $value) {
-                $goods = $db->table('goods')->field('*')->where("Id=$value")->item();
-                $role_goods = $db->table('role_goods')->field('num')->where("Id=$user and goods_id={$goods['Id']}")->item();
+                $goods = $db->table('goods_equip')->field('*')->where("Id=$value")->item();
+                $role_goods = $db->table('role_goods')->field('num')->where("role_id=$user and goods_id={$goods['Id']} and value='0'")->item();
                 if ($role_goods) {
-                    $db->table('role_goods')->where("Id=$user and goods_id={$goods['Id']}")->update(array('num' => $role_goods['num'] + 1));
-                }else{
-                    $date = ['Id' => $user, 'goods_id' => $goods['Id'], 'goods_name' => $goods['name'], 'num' => 1];
+                    $db->table('role_goods')->where("role_id=$user and goods_id={$goods['Id']}")->update(array('num' => $role_goods['num'] + 1));
+                } else {
+                    $date = ['role_id' => $user, 'goods_id' => $goods['Id'], 'goods_name' => $goods['name'],
+                        'grow' => $goods['grow'], 'hp' => $goods['hp'], 'mp' => $goods['mp'], 'atk' => $goods['atk'],
+                        'def' => $goods['def'], 'spd' => $goods['spd'], 'lv' => 0, 'num' => 1,
+                        'value' => 0];
                     $db->table('role_goods')->insert($date);
                 }
 

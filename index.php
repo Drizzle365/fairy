@@ -102,7 +102,7 @@ if (isset($_SESSION['userid'])) {
 <div class="container main" style="width: 100%;height: 400px;background-color: rgb(67,178,246,0.6);">
     <div style="color: white;font-size: 18px;margin: 20px;position: absolute">游戏公告 :</div>
     <div style="color: white;font-size: 15px;margin: 45px;position: absolute;text-align: left">
-        <br>嘿嘿，本游戏正在紧张开发中，开发完成后会在 Github 开源<br><br>
+        <br>嘿嘿，本游戏正在紧张开发中，开发进度会在 Github 开源<br><br>
         游戏介绍 : <br>
         这是一个类似十年前的wap网页文字游戏，游戏多以文字和图片呈现，像是很久之前的QQ家园里面的 精武堂 召唤之王 之类的文字为主的网游。<br>
         <br>Github: <a target="_blank" href="https://github.com/Drizzle365/fairy">
