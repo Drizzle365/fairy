@@ -57,15 +57,15 @@ $role = $db->table('role')->field('*')->where("Id=$user")->item();
             echo "<p>财神转世：气运＋1，灵石＋3000</p>";
         }
         if ($a == 4) {
-            $db->table('role')->where("Id=$user")->update(array('fire_atk'=>5,'fire_def'=>3));
+            $db->table('role')->where("Id=$user")->update(array('fire_atk'=>15,'fire_def'=>13));
             echo "<p>火神转世：火攻＋5，火抗＋3</p>";
         }
         if ($a == 5) {
-            $db->table('role')->where("Id=$user")->update(array('water_atk'=>5,'water_def'=>3));
+            $db->table('role')->where("Id=$user")->update(array('water_atk'=>15,'water_def'=>13));
             echo "<p>水神转世：水攻＋5，水抗＋3</p>";
         }
         if ($a == 6) {
-            $db->table('role')->where("Id=$user")->update(array('wood_atk'=>5,'wood_def'=>3));
+            $db->table('role')->where("Id=$user")->update(array('wood_atk'=>15,'wood_def'=>13));
             echo "<p>木神转世：木攻＋5，木抗＋3</p>";
         }
         $db->table('role')->where("Id=$user")->update(array('task'=>2));

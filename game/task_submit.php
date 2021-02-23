@@ -37,6 +37,7 @@ if (isset($_GET['task'])) {
         if ($task['goods']) {
             $task_goods = explode(',', $task['goods']);
             foreach ($task_goods as $key => $value) {
+                $goods_class=$db->table('goods')->field('class')->where("Id=$value")->item();
                 $goods = $db->table('goods_equip')->field('*')->where("Id=$value")->item();
                 $role_goods = $db->table('role_goods')->field('num')->where("role_id=$user and goods_id={$goods['Id']} and value='0'")->item();
                 if ($role_goods) {
@@ -44,7 +45,7 @@ if (isset($_GET['task'])) {
                 } else {
                     $date = ['role_id' => $user, 'goods_id' => $goods['Id'], 'goods_name' => $goods['name'],
                         'grow' => $goods['grow'], 'hp' => $goods['hp'], 'mp' => $goods['mp'], 'atk' => $goods['atk'],
-                        'def' => $goods['def'], 'spd' => $goods['spd'], 'lv' => 0, 'num' => 1,
+                        'def' => $goods['def'], 'spd' => $goods['spd'], 'lv' => 0, 'num' => 1,'class'=>$goods_class['class'],
                         'value' => 0];
                     $db->table('role_goods')->insert($date);
                 }

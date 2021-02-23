@@ -24,7 +24,7 @@ if ($role['task'] % 2 == 0) {
 <div style="text-align: left;color: white;font-size: 14px;margin-top: 10px">
     <h6 style="color: #f0e6c6">
         主线任务：<?php
-        echo "<a href='/main.php?page=task&task={$task['Id']}' style='color: #ffffff'>$task_name</a>"
+        echo "<a href='/main.php?page=task&task={$task['Id']}' style='color: #7d020d'>$task_name</a>"
         ?></h6>
     <h4>个人信息: </h4>
     姓名：<?php echo $role['name']; ?><br>

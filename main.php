@@ -27,6 +27,8 @@ if (isset($_GET['page'])) {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>仙之梦</title>
+    <link rel="icon" href="https://github.com/fluidicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="https://github.com/fluidicon.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
